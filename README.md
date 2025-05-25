@@ -2,7 +2,7 @@
 
 ---
 
-The API connects to an [2022 MSSQL Server](https://hub.docker.com/r/microsoft/mssql-server)
+The API connects to a [2022 MSSQL Server](https://hub.docker.com/r/microsoft/mssql-server)
 
 ---
 
