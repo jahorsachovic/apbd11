@@ -5,21 +5,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace apbd11.Controllers;
 
-[ApiController]
 [Route("api/[controller]")]
-public class PrescriptionController : ControllerBase
+[ApiController]
+public class PatientController : ControllerBase
 {
-    private PharmacyDbContext _dbContext;
+    private readonly PharmacyDbContext _dbContext;
 
-    public PrescriptionController(PharmacyDbContext dbContext)
+    public PatientController(PharmacyDbContext dbContext)
     {
         _dbContext = dbContext;
     }
-
+    
     [HttpGet]
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
-        var prescriptions = await _dbContext.Prescriptions.ToListAsync(cancellationToken);
-        return Ok(prescriptions);
+        var patients = await _dbContext.Patients.ToListAsync();
+        
+        return Ok(patients);
     }
+    
+    [HttpGet]
+    
+    
 }

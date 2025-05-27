@@ -72,6 +72,22 @@ public class PharmacyDbContext : DbContext
             new Prescription
             {
                 IdPrescription = 2,
+                Date = new DateTime(2020, 9, 9),
+                DueDate = new DateTime(2024, 7, 7),
+                IdPatient = 1,
+                IdDoctor = 1
+            },
+            new Prescription
+            {
+                IdPrescription = 3,
+                Date = new DateTime(2020, 9, 9),
+                DueDate = new DateTime(2023, 7, 7),
+                IdPatient = 1,
+                IdDoctor = 1
+            },
+            new Prescription
+            {
+                IdPrescription = 4,
                 Date = new DateTime(2015, 4, 4),
                 DueDate = new DateTime(2018, 6, 6),
                 IdPatient = 2,
