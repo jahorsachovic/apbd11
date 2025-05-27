@@ -17,7 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DAL\EntityTypeConfigurations\" />
       <Folder Include="DTOs\" />
     </ItemGroup>
 

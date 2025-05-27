@@ -1,16 +1,25 @@
+using apbd11.DAL;
 using apbd11.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace apbd11.Controllers;
 
-[Route("api/prescription")]
 [ApiController]
-public class PrescriptionController
+[Route("api/[controller]")]
+public class PrescriptionController : ControllerBase
 {
-    private readonly IPrescriptionService _prescriptionService;
+    private PharmacyDbContext _dbContext;
 
-    public PrescriptionController(IPrescriptionService prescriptionService)
+    public PrescriptionController(PharmacyDbContext dbContext)
     {
-        _prescriptionService = prescriptionService;
+        _dbContext = dbContext;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Get(CancellationToken cancellationToken)
+    {
+        var prescriptions = await _dbContext.Prescriptions.ToListAsync(cancellationToken);
+        return Ok(prescriptions);
     }
 }
