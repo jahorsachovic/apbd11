@@ -17,14 +17,15 @@ public class PatientsController : ControllerBase
         _dbContext = dbContext;
     }
     
+    //Test endpoint
     [HttpGet]
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         var patients = await _dbContext.Patients.ToListAsync(cancellationToken: cancellationToken);
-        
         return Ok(patients);
     }
 
+    //Get patient data
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetPatient(CancellationToken cancellationToken, int id)
     {
