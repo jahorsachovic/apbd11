@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apbd11.DAL;
 
@@ -11,9 +12,11 @@ using apbd11.DAL;
 namespace apbd11.Migrations
 {
     [DbContext(typeof(PharmacyDbContext))]
-    partial class PharmacyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525212543_CompleteDatabaseSchemaFull")]
+    partial class CompleteDatabaseSchemaFull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,24 +195,8 @@ namespace apbd11.Migrations
                         new
                         {
                             IdPrescription = 2,
-                            Date = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DueDate = new DateTime(2024, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IdDoctor = 1,
-                            IdPatient = 1
-                        },
-                        new
-                        {
-                            IdPrescription = 3,
-                            Date = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DueDate = new DateTime(2023, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IdDoctor = 1,
-                            IdPatient = 1
-                        },
-                        new
-                        {
-                            IdPrescription = 4,
-                            Date = new DateTime(2015, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DueDate = new DateTime(2018, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2018, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2015, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdDoctor = 2,
                             IdPatient = 2
                         });
@@ -235,7 +222,7 @@ namespace apbd11.Migrations
 
                     b.HasIndex("IdPrescription");
 
-                    b.ToTable("PrescriptionsMedicaments");
+                    b.ToTable("PrescriptionMedicament");
 
                     b.HasData(
                         new
@@ -263,7 +250,7 @@ namespace apbd11.Migrations
                         .IsRequired();
 
                     b.HasOne("apbd11.Models.Patient", "Patient")
-                        .WithMany("Prescriptions")
+                        .WithMany()
                         .HasForeignKey("IdPatient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -276,13 +263,13 @@ namespace apbd11.Migrations
             modelBuilder.Entity("apbd11.Models.PrescriptionMedicament", b =>
                 {
                     b.HasOne("apbd11.Models.Medicament", "Medicament")
-                        .WithMany("PrescriptionMedicaments")
+                        .WithMany()
                         .HasForeignKey("IdMedicament")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("apbd11.Models.Prescription", "Prescription")
-                        .WithMany("PrescriptionMedicaments")
+                        .WithMany()
                         .HasForeignKey("IdPrescription")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -290,21 +277,6 @@ namespace apbd11.Migrations
                     b.Navigation("Medicament");
 
                     b.Navigation("Prescription");
-                });
-
-            modelBuilder.Entity("apbd11.Models.Medicament", b =>
-                {
-                    b.Navigation("PrescriptionMedicaments");
-                });
-
-            modelBuilder.Entity("apbd11.Models.Patient", b =>
-                {
-                    b.Navigation("Prescriptions");
-                });
-
-            modelBuilder.Entity("apbd11.Models.Prescription", b =>
-                {
-                    b.Navigation("PrescriptionMedicaments");
                 });
 #pragma warning restore 612, 618
         }
