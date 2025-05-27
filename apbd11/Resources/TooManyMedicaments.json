@@ -1,0 +1,24 @@
+{
+  "patient": {
+    "idPatient": 3,
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "birthdate": "1990-05-20"
+  },
+  "idDoctor": 1,
+  "date": "2024-06-01",
+  "dueDate": "2024-06-15",
+  "prescriptionMedicaments": [
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" },
+    { "idMedicament": 1, "dose": 1, "details": "" }
+  ]
+}
