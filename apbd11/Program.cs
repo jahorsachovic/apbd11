@@ -1,3 +1,4 @@
+using System.Text.Json;
 using apbd11.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,10 @@ public class Program
         string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
         builder.Services.AddAuthorization();
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddJsonOptions(o =>
+        {
+            o.JsonSerializerOptions.PropertyNamingPolicy = null;
+        });
         builder.Services.AddDbContext<PharmacyDbContext>(opt =>
         {
             opt.UseSqlServer(connectionString);
