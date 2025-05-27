@@ -6,11 +6,11 @@ namespace apbd11.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PrescriptionController : ControllerBase
+public class PrescriptionsController : ControllerBase
 {
     private readonly PharmacyDbContext _dbContext;
 
-    public PrescriptionController(PharmacyDbContext dbContext)
+    public PrescriptionsController(PharmacyDbContext dbContext)
     {
         _dbContext = dbContext;
     }
